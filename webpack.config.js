@@ -1,11 +1,27 @@
-const HtmlWebapackPlugin = require('html-webpack-plugin');
+const HtmlWebapackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   output: {
     filename: 'app.bundle.js'
   },
-  mode: "development",
+  mode: 'development',
   plugins: [
-    new HtmlWebapackPlugin()
-  ]
+    new HtmlWebapackPlugin({
+      template: 'src/index.html'
+    })
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react']
+          }
+        }
+      }
+    ]
+  }
 }
