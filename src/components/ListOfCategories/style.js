@@ -4,6 +4,7 @@ import { fadeIn } from "../../styles/animation"
 export const List = styled.ul`
   display: flex;
   overflow: scroll;
+  padding-bottom: 16px;
   width: 100%;
 
   &::-webkit-scrollbar {

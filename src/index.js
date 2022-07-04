@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import { App } from './App'
+import Context from "./Context"
 
 const client = new ApolloClient({
   uri: 'https://petgram-server-frc.vercel.app/graphql',
@@ -10,7 +11,9 @@ const client = new ApolloClient({
 
 const root = ReactDOM.createRoot(document.getElementById('app'))
 root.render(
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>
+  <Context.Provider>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+  </Context.Provider>
 )
