@@ -1,8 +1,9 @@
 import React, { Fragment } from "react"
 import { useGetFavorites } from "../hooks/useGetFavorites"
 import { ListOfFavs } from "../components/ListOfFavs"
+import { Layout } from "../components/Layout"
 
-export const Favs = () => {
+export default () => {
   const { loading, error, data } = useGetFavorites()
 
   if (loading) return <p>Loading...</p>
@@ -10,8 +11,8 @@ export const Favs = () => {
   const { favs } = data
 
   return (
-    <Fragment>
+    <Layout title='Tus favoritos' subtitle='Aqui puedes encontrar tus favoritos'>
       <ListOfFavs favs={favs} />
-    </Fragment>
+    </Layout>
   )
 }
